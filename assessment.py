@@ -59,4 +59,24 @@ class Exam(Assessment):
             return "You failed the exam"
 
 
+class Project(Assessment):
 
+
+    def display_info(self):
+        print("Project:", self.title)
+        print("Max Score:", self.max_score)
+
+
+    def grade_message(self, score):
+        percentage = self.calculate_percentage(score)
+
+        if percentage >= 85:
+            return "Excellent project"
+        elif percentage >= 60:
+            return "Project submitted."
+        else:
+            return "Project needs improvement."
+
+
+
+        
