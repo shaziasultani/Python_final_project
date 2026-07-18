@@ -59,3 +59,30 @@ class Gradebook:
         course.add_assessment(assessment)
 
         return "Assessment added successfully"
+
+    def record_grade(self, student_id, course_code, assessment_title, score):
+        if student_id not in self.students:
+            return "Student does not exist"
+
+        student = self.students[student_id]
+
+        if course_code not in self.courses:
+            return "Course does not exist"
+
+        course = self.courses[course_code]
+        assessment = course.find_assessment(assessment_title)
+
+        if assessment is None:
+            return "No assessment"
+
+        if student_id not in self.grades:
+            self.grades[student_id] = {}
+
+        if course_code not in self.grades[student_id]:
+            self.grades[student_id][course_code] = {}
+
+        self.grades[student_id][course_code][assessment_title] = score
+        return "Grade recorded successfully"
+
+
+
