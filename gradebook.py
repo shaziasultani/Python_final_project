@@ -85,4 +85,19 @@ class Gradebook:
         return "Grade recorded successfully"
 
 
+    def calculate_average(self, student_id, course_code):
+        if student_id not in self.grades:
+            return "Student does not exist"
 
+        if course_code not in self.grades[student_id]:
+            return "Course does not exist"
+
+        course_grades = self.grades[student_id][course_code]
+
+        total = 0
+
+        for score in course_grades.values():
+            total += score
+
+        average = total / len(course_grades)
+        return average
