@@ -58,7 +58,7 @@ class Exam(Assessment):
         else:
             return "You failed the exam"
 
-
+# project class
 class Project(Assessment):
 
 
@@ -78,5 +78,3 @@ class Project(Assessment):
             return "Project needs improvement."
 
 
-
-        
