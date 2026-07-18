@@ -101,3 +101,39 @@ class Gradebook:
 
         average = total / len(course_grades)
         return average
+
+
+    def get_result(self, average):
+        if average >= 55:
+            return "Passed"
+        else:
+            return "Failed"
+
+
+    def show_report(self, student_id):
+        if student_id not in self.students:
+            return "Student does not exist"
+        student = self.students[student_id]
+
+
+        print("===== Student Report =====")
+        print(f"student ID:{student_id} \n Name:{student.name}, \n Email: {student.email} \n Courses: {student.courses}")
+
+
+        student_grades = self.grades[student_id]
+
+        for  course_code in student_grades:
+            course_grade = student_grades[course_code]
+
+
+        for assessment in course_grade:
+            score = course_grade[assessment]
+
+            print(f"{assessment}: {score}")
+
+        average = self.calculate_average(student_id, course_code)
+        print(f"Average: {average}")
+
+        result = self.get_result(average)
+        print(f"Result: {result}")
+
