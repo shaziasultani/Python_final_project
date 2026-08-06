@@ -114,7 +114,7 @@ class Gradebook:
         return average
 
     def get_result(self, average):
-        if average >= 55:
+        if average >= self.passing_grade:
             return "Passed"
         else:
             return "Failed"
@@ -172,6 +172,31 @@ class Gradebook:
         if len(results) == 0:
             return "Student does not exist"
         return results
+
+    def delete_student(self, student_id):
+        if student_id not in self.students:
+            return "Student does not exist"
+
+
+        if student_id in self.students:
+            del self.students[student_id]
+            for course_code, course in self.courses.items():
+                if student_id in course.students:
+                    course.students.remove(student_id)
+
+            if student_id in self.grades:
+                del self.grades[student_id]
+
+        return "Student deleted successfully"
+
+
+
+
+
+
+
+
+
 
 
 
