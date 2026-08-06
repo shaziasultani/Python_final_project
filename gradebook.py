@@ -139,14 +139,14 @@ class Gradebook:
 
         for course_code in student_grades:
 
-            print("\nCourse:", course_code)
+            course = self.courses[course_code]
+
+            print(f"\nCourse: {course_code} - {course.course_name}")
 
             course_grade = student_grades[course_code]
 
             for assessment in course_grade:
                 score = course_grade[assessment]
-
-                course = self.courses[course_code]
 
                 assessment_object = course.find_assessment(assessment)
 
@@ -156,7 +156,7 @@ class Gradebook:
 
             average = self.calculate_average(student_id, course_code)
 
-            print(f"Average: {average}%")
+            print(f"Average: {average:.2f}%")
 
             result = self.get_result(average)
 
@@ -188,6 +188,18 @@ class Gradebook:
                 del self.grades[student_id]
 
         return "Student deleted successfully"
+
+
+    def dashboard(self):
+        total_assessments = 0
+        for course_code, course in self.courses.items():
+            total_assessments += len(course.assessments)
+
+        print("===== Gradebook Dashboard =====")
+        print(f"Total Students: {len(self.students)}")
+        print(f"Total Courses: {len(self.courses)}")
+        print(f"Total Assessments: {total_assessments}")
+
 
 
 
