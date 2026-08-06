@@ -200,12 +200,24 @@ class Gradebook:
         print(f"Total Courses: {len(self.courses)}")
         print(f"Total Assessments: {total_assessments}")
 
+    def ranking(self):
+        ranking = []
+        for student_id, student in self.students.items():
+            total_average = 0
+            course_count = 0
+            for course_code in student.courses:
+                total_average += self.calculate_average(student_id, course_code)
+                course_count += 1
 
+            if course_count > 0:
+                student_average = total_average / course_count
+                ranking.append((student_id, student_average))
 
+        ranking.sort(key=lambda x: x[1], reverse=True)
+        for rank, student in enumerate(ranking, start=1):
+            print(f"{rank}. {student[0]} - {student[1]:.2f}%")
 
-
-
-
+        return ranking
 
 
 
