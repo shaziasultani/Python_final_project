@@ -173,6 +173,34 @@ class Gradebook:
             return "Student does not exist"
         return results
 
+    def update_student(self, student_id, new_email):
+
+        if student_id not in self.students:
+            return "Student does not exist"
+
+        student = self.students[student_id]
+
+        result = student.set_email(new_email)
+
+        if result == True:
+            return "Student email updated successfully"
+
+        return result
+
+    def view_students(self):
+        if len(self.students) == 0:
+            print("No students found.")
+            return
+
+        print("===== Students List =====")
+
+        for student_id, student in self.students.items():
+            print(f"Student ID: {student.student_id}")
+            print(f"Name: {student.name}")
+            print(f"Email: {student.email}")
+            print(f"Courses: {student.courses}")
+            print("---------------------------")
+
     def delete_student(self, student_id):
         if student_id not in self.students:
             return "Student does not exist"
