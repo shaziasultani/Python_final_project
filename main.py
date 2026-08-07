@@ -13,6 +13,7 @@ while True:
     print("3. Add Course")
     print("4. Enroll Student in Course")
     print("5. Add Assessment")
+    print("6. Record Grade")
     print("0. Exit")
 
     choice = input("Enter your choice: ")
@@ -83,3 +84,5 @@ while True:
 
         result = gradebook.add_assessment(course_code, assessment)
         print(result)
+
+
