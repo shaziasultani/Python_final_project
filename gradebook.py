@@ -71,6 +71,9 @@ class Gradebook:
             return "Course does not exist"
 
         course = self.courses[course_code]
+        if student_id not in course.students:
+            return "Student is not enrolled in this course"
+
         assessment = course.find_assessment(assessment_title)
 
         if assessment is None:

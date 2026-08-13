@@ -14,6 +14,8 @@ while True:
     print("4. Enroll Student in Course")
     print("5. Add Assessment")
     print("6. Record Grade")
+    print("7. View Student Report ")
+    print("8.Search Student")
     print("0. Exit")
 
     choice = input("Enter your choice: ")
@@ -84,6 +86,40 @@ while True:
 
         result = gradebook.add_assessment(course_code, assessment)
         print(result)
+
+
+    elif choice == "6":
+        student_id = input("Enter student ID: ")
+        course_code = input("Enter course code: ")
+        assessment_title = input("Enter assessment title: ")
+        score = float(input("Enter score: "))
+
+        result = gradebook.record_grade(student_id, course_code, assessment_title, score)
+        print(result)
+
+    elif choice == "7":
+        student_id = input("Enter student ID: ")
+        gradebook.show_report(student_id)
+
+
+
+
+    elif choice == "8":
+
+        keyword = input("Enter keyword: ")
+
+        result = gradebook.search_student(keyword)
+
+        if result == "Student does not exist":
+
+            print(result)
+
+        else:
+
+            for student in result:
+                student.display_info()
+
+
 
 
 
