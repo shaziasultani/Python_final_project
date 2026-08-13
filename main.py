@@ -18,6 +18,8 @@ while True:
     print("8.Search Student")
     print("9.Update Student")
     print("10.Delete Student")
+    print("11.Dashboard")
+    print("12.Ranking")
     print("0. Exit")
 
     choice = input("Enter your choice: ")
@@ -134,6 +136,16 @@ while True:
         student_id = input("Enter student ID: ")
         result = gradebook.delete_student(student_id)
         print(result)
+
+
+    elif choice == "11":
+        gradebook.dashboard()
+
+
+    elif choice == "12":
+        gradebook.ranking()
+
+
     else:
         print("Invalid choice")
 
