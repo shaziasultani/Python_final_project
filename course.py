@@ -5,9 +5,9 @@ class Course:
         self.students = []
         self.assessments = []
 
-
     def add_student(self, student_id):
-        self.students.append(student_id)
+        if student_id not in self.students:
+            self.students.append(student_id)
 
     def add_assessment(self, assessment):
         self.assessments.append(assessment)
